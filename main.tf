@@ -4,10 +4,7 @@ terraform {
 
 provider "aws" {
   region = "${var.aws_region}"
-}
-
-resource "random_id" "tf_bucket_id" {
-  byte_length = 2
+  profile = "${var.aws_profile}"
 }
 
 resource "aws_s3_bucket" "tf_code" {
@@ -17,4 +14,7 @@ resource "aws_s3_bucket" "tf_code" {
     tags {
       Name = "John_Dohoney"
     }
+}
+resource "random_id" "tf_bucket_id" {
+  byte_length = 2
 }
